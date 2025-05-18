@@ -8,3 +8,7 @@
 label {
     font-weight: bold;
 }
+
+.form label {
+    width: 200px;
+}
