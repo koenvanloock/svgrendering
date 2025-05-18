@@ -1,0 +1,10 @@
+.form {
+    border: 3px dotted #cacaca;
+    padding: 1rem;
+    border-radius: 50px;
+    width: 50%;
+}
+
+label {
+    font-weight: bold;
+}
