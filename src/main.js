@@ -9,7 +9,10 @@ let innerRadius = 100
 let radius = 140
 const debug = false;
 let selectedText = null;
-const texts = ['aa', 'b', 'c', "d", 'e', 'reflecteren', 'g', 'h']
+const korthagenSteps = ["Handelen",'Terugblikken','Bewustwording', 'Alternatieven ontwikkelen', 'Uitproberen']
+const abcStepsVoluit = ['Airway', 'Breathing', 'Circulation', 'Disablility', 'Exposure', 'Full set fysiek', 'Fullset psychisch', 'Full set sociaal']
+const abcSteps = ['A', 'B', 'C', 'D', 'E', 'Ff', 'Fp', 'Fs']
+const texts = ['informatieverwerking', 'VP en Co-P', 'Doelstellingen', "Interventies en observaties", 'Evaluatie', 'reflectie', 'situatieschets', 'Gegevensverzameling']
 let whitespace = 0
 const degrees_to_radians = deg => (deg * Math.PI) / 180.0;
 
@@ -23,6 +26,7 @@ function renderRotatedText(text, point, angle, color = 'white') {
             y: Math.floor(angle) == 180 ? point.y + 10 : point.y,
             'text-anchor': 'middle',
             'font-family': 'Arial, Helvetica, sans-serif',
+            'font-size': '8px',
             transform: `rotate(${Math.floor(angle) == 180 ? 0 : angle}, ${point.x},${point.y})`,
         },
         style: {
@@ -241,9 +245,9 @@ function svgNode() {
     return h('svg', {attrs: {width: width, height: width}},
         [
             defs(),
-            ...circleArc('SCHEMA', center, radius, backCircleRadius, 293, 475, 'url(#Grad1)', 20
+            ...circleArc('ABC - tool', center, radius, backCircleRadius, 293, 475, 'url(#Grad1)', 20
                 , 0),
-            ...circleArc('PESDIE', center, radius, backCircleRadius, 114, 248, 'url(#Grad2)'),
+            ...circleArc('PESDIE', center, radius, backCircleRadius, 90, 248, 'url(#Grad2)'),
             ...circleArc('Korthagen', center, radius, backCircleRadius, 248, 293, 'url(#Grad3)', 0, null, 10),
             ...generateArrayOfCount(texts.length).flatMap(index => dognutPart(index, texts[index - 1], texts.length, radius, innerRadius, center, whitespace, isSelected(texts[index - 1]))),
             //circle(center, 5, 'red')
